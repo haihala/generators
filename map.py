@@ -119,32 +119,32 @@ def generate(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a world map image")
-    parser.add_argument("-file", metavar="-f", type=str, default=False, nargs="?",
+    parser.add_argument("-file", type=str, default=False, nargs="?",
         help="Name of file to save the map to")
     parser.add_argument("width", type=int,
         help="Width of image")
     parser.add_argument("height", type=int,
         help="Height of image")
-    parser.add_argument("-view", metavar="-v", const=True, default=False, nargs='?',
+    parser.add_argument("-view", const=True, default=False, nargs='?',
         help="View map after generating")
 
-    parser.add_argument("-height_offset", metavar="-ha", type=float, default=50,
+    parser.add_argument("-height_offset", type=float, default=50,
         help="How high is sea level")
-    parser.add_argument("-height_delta", metavar="-hd", type=float, default=800000,
+    parser.add_argument("-height_delta", type=float, default=800000,
         help="Height delta. How tall should the summits of mountains be.")
-    parser.add_argument("-height_points", metavar="-hp", type=int, default=0.001,
+    parser.add_argument("-height_points", type=int, default=0.001,
         help="How many random points should random values be applied to per pixel")
-    parser.add_argument("-height_smooth_size", metavar="-hss", type=int, default=20,
+    parser.add_argument("-height_smooth_size", type=int, default=20,
         help="How much should smoothing influence(1 is total offset, 0 is no smoothing)")
-    parser.add_argument("-height_smooth_power", metavar="-hsp", type=float, default=0.7,
+    parser.add_argument("-height_smooth_power", type=float, default=0.7,
         help="How much should smoothing influence(1 is total offset, 0 is no smoothing)")
-    parser.add_argument("-height_smooth_rounds", metavar="-hsr", type=int, default=6,
+    parser.add_argument("-height_smooth_rounds", type=int, default=6,
         help="How many times should the smoothing be ran")
-    parser.add_argument("-beach_height", metavar="-bh", type=float, default=5,
+    parser.add_argument("-beach_height", type=float, default=5,
         help="Maximum height for 'beach'")
-    parser.add_argument("-mountain_height", metavar="-mh", type=float, default=100,
+    parser.add_argument("-mountain_height", type=float, default=100,
         help="Minimum height for 'mountain'")
-    parser.add_argument("-summit_height", metavar="-sh", type=float, default=180,
+    parser.add_argument("-summit_height", type=float, default=180,
         help="Minimum height for 'summit'")
 
     args = parser.parse_args()
