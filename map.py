@@ -37,9 +37,11 @@ def generate(
     surf = pygame.Surface(size)
 
     # Random points for altitude
+    points = []
     for _ in range(int(height_points*size[0]*size[1])):
         i = int(random()*size[0])
         j = int(random()*size[1])
+        points.append((i, j))
         height_map[i][j] += height_delta*(0.5-random())
 
     print("Randomness generated")
@@ -49,6 +51,11 @@ def generate(
         print("Beginning height smoothing round {}".format(i+1))
         smooth(height_map, height_smooth_size, height_smooth_power)
     print("Smoothing done")
+
+    # Remove original points
+    for point in points:
+        i, j = point
+        height_map[i][j] = (sum(sum(column for column in row[j-1:j+1]) for row in height_map[i-1:i+1])-height_map[i][j])/8
 
     # Crop to size. Do it this way to ignore edge when smoothing.
     height_map = [row[height_smooth_size:-height_smooth_size] for row in height_map[height_smooth_size:-height_smooth_size]]
